@@ -58,3 +58,17 @@ db.employees.find({
 db.employees.find({
 	gender: {$not:{$ne:'F'}}
 })
+//Hombres con hotmail.
+db.employees.find({
+	$nor:[{email:{$regex:/.gmail*/}}, {gender:{$eq:'F'}}]
+})
+//Muestra los que han hecho checkin x número de veces en especifico.
+db.employees.find({
+	checkin:{$in:[120,210]}
+})
+//Lo contrario al de arriba, muestra a los que NO han hecho checkin ese nº de veces.
+db.employees.find({
+        checkin:{$nin:[120,210]}
+})
+
+
